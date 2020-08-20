@@ -9,6 +9,17 @@ app.use(express.json());
 app.use(cors());
 
 const repositories = [];
+const size = parseInt(Math.random() * 9) + 1;
+
+for(let i = 0; i < size; i++){
+  repositories.push({
+    id: uuid(), 
+    title: `Title ${i}`, 
+    url: `https://${uuid()}/`, 
+    techs: [], 
+    likes: parseInt(Math.random() * 50)
+  })
+}
 
 app.get("/repositories", (request, response) => {
   return response.status(200).json(repositories); 
